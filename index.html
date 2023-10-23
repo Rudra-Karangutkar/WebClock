@@ -95,6 +95,21 @@
                 opacity: 1;
             }
         }
+        .hh1 {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+        }
+
+        .hh1 div {
+            flex-basis: 100px;
+        }
+
+        .hh1 div p {
+            font-size: 60px;
+            margin-bottom: -14px;
+        }
+
     </style>
 </head>
 
@@ -120,6 +135,20 @@
                 <div>
                     <p id="seconds">00</p>
                     <span>Seconds</span>
+                </div>
+            </div>
+            <div class="hh1">
+                <div id="seconds1">
+                    <p id="secondss">00</p>
+                    <span>Seconds</span>
+                </div>
+                <div id="minutes1">
+                    <p id="minutess">00</p>
+                    <span>Minutes</span>
+                </div>
+                <div id="hours1">
+                    <p id="hourss">00</p>
+                    <span>Hours</span>
                 </div>
             </div>
             <button type="button">Learn More <img src="images/triangle.png" alt=""></button>
@@ -149,6 +178,41 @@
                 document.getElementById('hours').innerHTML = '00';
                 document.getElementById('minutes').innerHTML = '00';
                 document.getElementById('seconds').innerHTML = '00';
+            }
+            // this is for seconds 
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var secondsRemaining = Math.floor(distance / 1000);
+
+            document.getElementById('secondss').innerHTML = secondsRemaining;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById('secondss').innerHTML = '00 Seconds';
+            }
+            
+            // this is for minutes 
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var minutesRemaining = Math.floor((distance / 1000) / 60);
+
+            document.getElementById('minutess').innerHTML = minutesRemaining;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById('minutess').innerHTML = '00 Minutes';
+            }
+            
+            // this is for hours 
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var hoursRemaining = Math.floor((distance / (1000 * 60 * 60)));
+
+            document.getElementById('hourss').innerHTML = hoursRemaining;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById('hourss').innerHTML = '00 Hours';
             }
         }, 1000);
     </script>
